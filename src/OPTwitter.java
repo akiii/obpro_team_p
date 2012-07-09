@@ -13,13 +13,19 @@ import twitter4j.auth.RequestToken;
 
 public class OPTwitter {
 
+	private static final OPTwitter instance = new OPTwitter();
+	
 	private static final String consumer_key = "zjBVPSrszgiJI76bc7I5Dw";
 	private static final String consumer_secret = "R1qaXieTTpyLnKJoTtZrjvDzcLfG39JeUxZlHXkkI";
 	public Twitter twitter;
 	public AccessToken accessToken;
 
-	public OPTwitter(){
+	private OPTwitter(){
 
+	}
+	
+	public static OPTwitter sharedInstace(){
+		return instance;
 	}
 	
 	public void login() throws TwitterException, IOException{

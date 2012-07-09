@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 public class OPGameMain {
 
 	/**
@@ -16,7 +6,7 @@ public class OPGameMain {
 	 */
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		OPTwitter opTwitter = new OPTwitter();
+		OPTwitter opTwitter = OPTwitter.sharedInstace();
 		opTwitter.login();
 	}
 
