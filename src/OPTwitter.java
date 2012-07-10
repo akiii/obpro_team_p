@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import twitter4j.ProfileImage;
@@ -73,8 +75,9 @@ public class OPTwitter {
 		}
 	}
 	
-	public String getCurrentUserIconURL() throws TwitterException{
-		return twitter.getProfileImage(twitter.getScreenName(), ProfileImage.NORMAL).getURL();
+	public URL getCurrentUserIconURL() throws TwitterException, MalformedURLException, IllegalStateException{
+		URL url = new URL(twitter.getProfileImage(twitter.getScreenName(), ProfileImage.NORMAL).getURL());
+		return url;
 	}
 	
 	
