@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 
@@ -15,7 +16,8 @@ public class OPCharacter extends OPObject{
 		this.positionY += this.velocityY;
 	}
 	
-	public void paint(Graphics g) {
-		g.drawString(this.character, this.positionX, this.positionY);
+	public void paint(Graphics g){
+		g.setColor(new Color(0, 0, 0));
+		g.drawString(this.character, this.positionX, this.positionY);	
 	}
 }

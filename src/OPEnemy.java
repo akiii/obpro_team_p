@@ -1,7 +1,9 @@
+import java.net.URL;
+
 
 public class OPEnemy extends OPIcon{
 
-	public OPEnemy(int x, int y, int w, int h, String u) {
+	public OPEnemy(int x, int y, int w, int h, URL u) {
 		super(x, y, w, h, u);
 		this.hp = 1;
 	}
