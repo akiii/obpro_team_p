@@ -8,4 +8,9 @@ public class OPCharacter extends OPObject{
 		this.character = c;
 	}
 	
+	public void move() {
+		this.positionX += this.velocityX;
+		this.positionY += this.velocityY;
+	}
+	
 }

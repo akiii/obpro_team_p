@@ -6,4 +6,9 @@ public class OPEnemy extends OPIcon{
 		this.hp = 1;
 	}
 
+	public void move() {
+		this.positionX += this.velocityX;
+		this.positionY += this.velocityY;
+	}
+
 }

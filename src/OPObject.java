@@ -17,8 +17,6 @@ public class OPObject {
 	}
 	
 	public void move() {
-		this.positionX += this.velocityX;
-		this.positionY += this.velocityY;
 	}
 	
 	private class MoveTask extends TimerTask {
