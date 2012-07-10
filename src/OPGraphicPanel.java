@@ -28,4 +28,5 @@ public class OPGraphicPanel extends JPanel {
 		ImageIcon icon = new ImageIcon(u, null);
 		icon.paintIcon(null, g, icon.getIconWidth(), icon.getIconHeight());
 	}
+
 }
