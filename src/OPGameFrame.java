@@ -33,7 +33,8 @@ public class OPGameFrame extends JFrame {
 		this.setVisible(true);
 		
 		this.twitter.login();
-		this.gPanel.printImage(gPanel.getGraphics(), this.twitter.getCurrentUserIconURL());
+//		this.gPanel.printImage(gPanel.getGraphics(), this.twitter.getCurrentUserIconURL());
+//		this.twitter.getFriendsList(100);
 	}
 
 }
