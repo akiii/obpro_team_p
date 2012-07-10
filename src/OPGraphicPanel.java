@@ -21,4 +21,7 @@ public class OPGraphicPanel extends JPanel {
 		g.drawString(s, this.getWidth()/2, this.getHeight()/2);
 	}
 	
+	
+	
+	
 }
