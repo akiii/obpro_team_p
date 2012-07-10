@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import twitter4j.ProfileImage;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -70,6 +71,10 @@ public class OPTwitter {
 		for (Status status : statuses) {
 			System.out.println(status.getUser().getName() + ":" + status.getText());
 		}
+	}
+	
+	public String getCurrentUserIconURL() throws TwitterException{
+		return twitter.getProfileImage(twitter.getScreenName(), ProfileImage.NORMAL).getURL();
 	}
 	
 	
