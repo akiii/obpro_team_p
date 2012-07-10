@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,7 +14,7 @@ public class OPObject {
 		timer.schedule(new MoveTask(), 0, 30);
 	}
 	
-	public void paint() {
+	public void paint(Graphics g) {
 	}
 	
 	public void move() {
