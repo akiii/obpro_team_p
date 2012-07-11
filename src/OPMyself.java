@@ -16,7 +16,7 @@ public class OPMyself extends OPIcon implements KeyListener,MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		new OPCharacter(10,10,"Test");
-		
+		System.out.print("click");
 	}
 
 	@Override

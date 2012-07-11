@@ -12,6 +12,18 @@ public class OPGraphicPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+//	private OPEnemy[] enemy;
+	private OPObject myself;
+//	private OPCharacter[] character;
+	
+	public OPGraphicPanel(){
+		myself = new OPObject(0, 0);
+	}
+	
+	public void paint(Graphics g){
+		clean(g);
+		myself.paint(g);
+	}
 
 	public void clean(Graphics g){
 		g.setColor(new Color(255, 255, 255));
@@ -27,6 +39,10 @@ public class OPGraphicPanel extends JPanel {
 		this.clean(g);
 		ImageIcon icon = new ImageIcon(u, null);
 		icon.paintIcon(null, g, icon.getIconWidth(), icon.getIconHeight());
+	}
+	
+	public void addMyself(OPObject m){
+		myself = m;
 	}
 
 }
