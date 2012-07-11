@@ -97,10 +97,10 @@ public class OPTwitter {
 		return url;
 	}
 
-	public ArrayList<URL> getFriendsList(int useUserCount) throws TwitterException, MalformedURLException {
+	public ArrayList<URL> getFriendUrlsList(int useUserCount) throws TwitterException, MalformedURLException {
 		/* useUserCount is fetch use count but less than 100 */
 		int count = Math.min(useUserCount, 100);
-		long[] allIds = twitter.getFollowersIDs(twitter.getScreenName(), -1).getIDs();
+		long[] allIds = twitter.getFriendsIDs(twitter.getScreenName(), -1).getIDs();
 		long[] useIds = new long[count];
 		
 		ArrayList<URL> urls = new ArrayList<URL>();
