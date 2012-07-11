@@ -20,7 +20,7 @@ public class OPIcon extends OPObject{
 	
 	public void paint(Graphics g) {
 		Image icon = new ImageIcon(this.url, null).getImage();
-		g.drawImage(icon, this.positionX, this.positionY, this.width, this.height, null);
+		g.drawImage(icon, this.positionX - this.width/2, this.positionY - this.height/2, this.width, this.height, null);
 	}
 
 }
