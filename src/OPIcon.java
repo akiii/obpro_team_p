@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Image;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -18,8 +19,8 @@ public class OPIcon extends OPObject{
 	}
 	
 	public void paint(Graphics g) {
-		ImageIcon icon = new ImageIcon(this.url, null);
-		icon.paintIcon(null, g, icon.getIconWidth(), icon.getIconHeight());
+		Image icon = new ImageIcon(this.url, null).getImage();
+		g.drawImage(icon, this.positionX, this.positionY, this.width, this.height, null);
 	}
 
 }
