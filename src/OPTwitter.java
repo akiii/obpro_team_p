@@ -79,9 +79,7 @@ public class OPTwitter {
 		System.out.println("hour limit count : " + rateLimit.getHourlyLimit());
 		System.out.println("remain count : " + rateLimit.getRemainingHits());
 		System.out.println("untill reset sec : " + rateLimit.getSecondsUntilReset());
-		System.out.println("=======================");
-				
-//		this.getHomeTimeline();
+		System.out.println("=======================");				
 	}
 
 	public void getHomeTimeline() throws TwitterException {
@@ -90,6 +88,17 @@ public class OPTwitter {
 		for (twitter4j.Status status : statuses) {
 			System.out.println(status.getUser().getName() + ":" + status.getText());
 		}
+	}
+	
+	public ArrayList<String> getMyTweets(int count) throws TwitterException{
+		/* count is fetch tweets count but less than 20 */
+		int c = Math.min(count, 20);
+		ArrayList<String> tweets = new ArrayList<String>();
+		List<twitter4j.Status> statuses = this.twitter.getUserTimeline();
+		for (int i = 0; i < c; i++) {
+			tweets.add(statuses.get(i).getText());
+		}
+		return tweets;
 	}
 
 	public URL getCurrentUserIconURL() throws TwitterException, MalformedURLException, IllegalStateException {
