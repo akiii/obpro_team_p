@@ -21,10 +21,14 @@ public class OPGraphicPanel extends JPanel {
 	
 	public void paint(Graphics g){
 		clean(g);
-
+		for (OPObject o : objects) {
+			o.paint(g);
+		}
+	}
+	
+	public void moveObject(){
 		for (OPObject o : objects) {
 			o.move();
-			o.paint(g);
 		}
 	}
 

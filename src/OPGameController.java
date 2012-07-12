@@ -36,6 +36,7 @@ public class OPGameController {
 	public void runloop(OPGameFrame f, OPGraphicPanel p) throws InterruptedException{
 		while(true){
 			p.repaint();
+			p.moveObject();
 			Thread.sleep(30);
 			gameTime += 0.03;
 			releaseEnemyTimer += 1;
