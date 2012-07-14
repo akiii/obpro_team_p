@@ -15,9 +15,13 @@ public class OPGameController {
 	private OPObjectFactory enemyFactory = new OPEnemyFactory();
 	
 	private ArrayList<OPObject> stackEnemys = new ArrayList<OPObject>();
-	private ArrayList<String> stackTweets = new ArrayList<String>();
 	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
-	int releaseEnemyTimer = 0;
+	private ArrayList<String> stackTweets = new ArrayList<String>();
+	int releaseTimer = 0;
+	int mouseClickCount = 0;
+	boolean isBullet = false;
+	int characterCount = 0;
+	int bulletCount = 0;
 	
 	public float gameTime = 0;
 	
@@ -45,8 +49,8 @@ public class OPGameController {
 			p.moveObject();
 			Thread.sleep(30);
 			gameTime += 0.03;
-			releaseEnemyTimer += 1;
-			if (releaseEnemyTimer % 100 == 0) {
+			releaseTimer ++;
+			if (releaseTimer % 100 == 0) {
 				if (stackEnemys.size() > 0) {
 					OPEnemy e = (OPEnemy)stackEnemys.get((int)Math.random() % stackEnemys.size());
 					e.active = true;
@@ -55,9 +59,27 @@ public class OPGameController {
 					stackEnemys.remove(e);
 				}
 			}
+			if (releaseTimer % 2 == 0 && isBullet) {
+				p.addObject(stackCharacters.get(bulletCount));
+				bulletCount++;
+				if (bulletCount >= characterCount) {
+					isBullet = false;
+					bulletCount = 0;
+					characterCount = 0;
+					stackCharacters.clear();
+				}
+			}
 		}
 	}
 	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
-		p.addObject(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(stackTweets.get(0).charAt(1))));
+		for(char c :stackTweets.get(mouseClickCount).toCharArray()){
+			stackCharacters.add(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(c)));	
+		}
+		mouseClickCount++;
+		if (mouseClickCount >= stackTweets.size()) {
+			mouseClickCount = 0;
+		}
+		isBullet = true;
+		characterCount = stackCharacters.size();
 	}
 }
