@@ -20,7 +20,6 @@ public class OPGameController {
 	int releaseTimer = 0;
 	int mouseClickCount = 0;
 	boolean isBullet = false;
-	int characterCount = 0;
 	int bulletCount = 0;
 	
 	public float gameTime = 0;
@@ -47,6 +46,7 @@ public class OPGameController {
 		while(true){
 			p.repaint();
 			p.moveObject();
+			p.checkRemoveObject(f);
 			Thread.sleep(30);
 			gameTime += 0.03;
 			releaseTimer ++;
@@ -62,10 +62,9 @@ public class OPGameController {
 			if (releaseTimer % 2 == 0 && isBullet) {
 				p.addObject(stackCharacters.get(bulletCount));
 				bulletCount++;
-				if (bulletCount >= characterCount) {
+				if (bulletCount >= stackCharacters.size()) {
 					isBullet = false;
 					bulletCount = 0;
-					characterCount = 0;
 					stackCharacters.clear();
 				}
 			}
@@ -80,6 +79,5 @@ public class OPGameController {
 			mouseClickCount = 0;
 		}
 		isBullet = true;
-		characterCount = stackCharacters.size();
 	}
 }

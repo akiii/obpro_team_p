@@ -11,8 +11,6 @@ public class OPGraphicPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//	private OPEnemy[] enemy;
-//	private OPCharacter[] character;
 	private ArrayList<OPObject> objects = new ArrayList<OPObject>();
 	
 	public OPGraphicPanel(){
@@ -29,6 +27,19 @@ public class OPGraphicPanel extends JPanel {
 	public void moveObject(){
 		for (OPObject o : objects) {
 			o.move();
+		}
+	}
+	
+	public void checkRemoveObject(OPGameFrame f){
+		ArrayList<OPObject> removeObjects = new ArrayList<OPObject>();
+		for (OPObject o : objects) {
+			if (o.positionX < -100 || o.positionX > f.getWidth()+100 
+					|| o.positionY < -100 || o.positionY > f.getHeight()+100) {
+				removeObjects.add(o);
+			}
+		}
+		for (OPObject o : removeObjects) {
+			objects.remove(o);
 		}
 	}
 
