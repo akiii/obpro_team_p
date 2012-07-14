@@ -58,6 +58,6 @@ public class OPGameController {
 		}
 	}
 	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
-		p.addObject(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)((point.getX()-25)/20), (int)((point.getY()-f.getHeight()/2)/20), String.valueOf(stackTweets.get(0).charAt(1))));
+		p.addObject(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(stackTweets.get(0).charAt(1))));
 	}
 }
