@@ -9,8 +9,8 @@ public class OPMyselfFactory extends OPObjectFactory{
 	}
 
 	@Override
-	public OPCharacter createCharacter(int x, int y, String c) {
-		return new OPCharacter(x, y, c);
+	public OPCharacter createCharacter(int x, int y, int vx, int vy, String c) {
+		return new OPCharacter(x, y, vx, vy, c);
 	}
 
 }

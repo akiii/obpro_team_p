@@ -35,14 +35,14 @@ public class OPGameFrame extends JFrame implements MouseListener {
 		this.addMouseListener(this);
 				
 		controller.setObjectsFirst(this, gPanel);
-		controller.runloop(this, this.gPanel);
+		controller.runloop(this, gPanel);
 
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("mouse clicked");
+		
 	}
 
 	@Override
@@ -60,7 +60,8 @@ public class OPGameFrame extends JFrame implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("mouse clicked");
+		controller.setBullet(this, gPanel, e.getPoint());
 	}
 
 	@Override

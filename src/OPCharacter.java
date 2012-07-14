@@ -6,9 +6,11 @@ public class OPCharacter extends OPObject{
 
 	protected String character;
 	
-	public OPCharacter(int x, int y, String c) {
+	public OPCharacter(int x, int y, int vx, int vy, String c) {
 		super(x, y);
 		this.character = c;
+		this.velocityX = vx;
+		this.velocityY = vy;
 	}
 	
 	public void move() {
@@ -18,6 +20,6 @@ public class OPCharacter extends OPObject{
 	
 	public void paint(Graphics g){
 		g.setColor(new Color(0, 0, 0));
-		g.drawString(this.character, this.positionX, this.positionY);	
+		g.drawString(this.character, this.positionX, this.positionY);
 	}
 }

@@ -9,7 +9,7 @@ public class OPEnemyFactory extends OPObjectFactory{
 	}
 
 	@Override
-	public OPCharacter createCharacter(int x, int y, String c) {
+	public OPCharacter createCharacter(int x, int y, int vx, int vy, String c) {
 		return null;
 	}
 

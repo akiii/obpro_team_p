@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,6 +15,8 @@ public class OPGameController {
 	private OPObjectFactory enemyFactory = new OPEnemyFactory();
 	
 	private ArrayList<OPObject> stackEnemys = new ArrayList<OPObject>();
+	private ArrayList<String> stackTweets = new ArrayList<String>();
+	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
 	int releaseEnemyTimer = 0;
 	
 	public float gameTime = 0;
@@ -30,6 +33,9 @@ public class OPGameController {
 			OPObject e = this.enemyFactory.createIcon(-iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, u);
 			p.addObject(e);
 			stackEnemys.add(e);
+		}
+		for (String s : this.twitter.getMyTweets(10)) {
+			stackTweets.add(s);
 		}
 	}
 	
@@ -51,5 +57,7 @@ public class OPGameController {
 			}
 		}
 	}
-	
+	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
+		p.addObject(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)((point.getX()-25)/20), (int)((point.getY()-f.getHeight()/2)/20), String.valueOf(stackTweets.get(0).charAt(1))));
+	}
 }
