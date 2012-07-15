@@ -2,6 +2,7 @@ import java.awt.Graphics;
 
 
 public class OPObject {
+	protected int width, height;
 	protected int positionX, positionY;
 	protected int velocityX, velocityY;
 	
@@ -14,6 +15,14 @@ public class OPObject {
 	}
 	
 	public void move() {
+	}
+	
+	public int getWidth(){
+		return this.width;
+	}
+	
+	public int getHeight(){
+		return this.height;
 	}
 	
 }

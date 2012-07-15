@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 
 public class OPIcon extends OPObject{
 	
-	protected int width, height;
 	protected int hp;
 	protected URL url;
 
