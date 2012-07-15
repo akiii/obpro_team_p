@@ -19,6 +19,7 @@ public class OPLife extends OPObject{
 	}
 
 	public void paint(Graphics g){
-
+		Image icon = new ImageIcon("gift_button_red_back.png", null).getImage();
+		g.drawImage(icon, this.positionX - this.width/2, this.positionY - this.height/2, this.width, this.height, null);
 	}
 }
