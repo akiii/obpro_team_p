@@ -14,13 +14,15 @@ public class OPGameController {
 	private OPObjectFactory myselfFactory = new OPMyselfFactory();
 	private OPObjectFactory enemyFactory = new OPEnemyFactory();
 	
+	private OPObject myself;
 	private ArrayList<OPObject> stackEnemys = new ArrayList<OPObject>();
 	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
 	private ArrayList<String> stackTweets = new ArrayList<String>();
-	int releaseTimer = 0;
-	int mouseClickCount = 0;
-	boolean isBullet = false;
-	int bulletCount = 0;
+	
+	private int releaseTimer = 0;
+	private int mouseClickCount = 0;
+	public boolean isBullet = false;
+	private int bulletCount = 0;
 	
 	public float gameTime = 0;
 	
@@ -31,9 +33,10 @@ public class OPGameController {
 	public void setObjectsFirst(OPGameFrame f, OPGraphicPanel p) throws MalformedURLException, IllegalStateException, TwitterException{
 		int iconWidth = 50;
 		int iconHeight = 50;
-		p.addObject(this.myselfFactory.createIcon(iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL()));
+		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
+		p.addObject(myself);
 		for (URL u : this.twitter.getFriendUrlsList(10)) {
-			OPObject e = this.enemyFactory.createIcon(-iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, u);
+			OPObject e = this.enemyFactory.createIcon(f.getWidth() + iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, u);
 			p.addObject(e);
 			stackEnemys.add(e);
 		}
@@ -54,7 +57,7 @@ public class OPGameController {
 				if (stackEnemys.size() > 0) {
 					OPEnemy e = (OPEnemy)stackEnemys.get((int)Math.random() % stackEnemys.size());
 					e.active = true;
-					e.positionX = f.getWidth() + e.width/2;
+					e.positionX = -e.width/2;
 					e.positionY = (int)(Math.random() * (f.getHeight() - e.width/2)) + e.width/2;
 					stackEnemys.remove(e);
 				}
@@ -72,7 +75,7 @@ public class OPGameController {
 	}
 	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
 		for(char c :stackTweets.get(mouseClickCount).toCharArray()){
-			stackCharacters.add(this.myselfFactory.createCharacter(25, f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(c)));	
+			stackCharacters.add(this.myselfFactory.createCharacter(f.getWidth() - myself.getWidth(), f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(c)));	
 		}
 		mouseClickCount++;
 		if (mouseClickCount >= stackTweets.size()) {
