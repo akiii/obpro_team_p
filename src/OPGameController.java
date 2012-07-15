@@ -58,7 +58,7 @@ public class OPGameController {
 					OPEnemy e = (OPEnemy)stackEnemys.get((int)Math.random() % stackEnemys.size());
 					e.active = true;
 					e.positionX = -e.width/2;
-					e.positionY = (int)(Math.random() * (f.getHeight() - e.width/2)) + e.width/2;
+					e.positionY = (int)(Math.random() * (f.getHeight() - e.width/2*3)) + e.width/2;
 					stackEnemys.remove(e);
 				}
 			}
