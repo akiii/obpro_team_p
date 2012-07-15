@@ -10,7 +10,7 @@ public class OPCharacter extends OPObject{
 	public OPCharacter(int x, int y, int vx, int vy, String c) {
 		super(x, y);
 		this.character = c;
-		this.velocityX = (int) (vx*15 / Math.sqrt((vx*vx+vy*vy)));
+		this.velocityX = (int) (vx*15 / Math.sqrt((vx*vx+vy*vy))) * -1;
 		this.velocityY = (int) (vy*15 / Math.sqrt((vx*vx+vy*vy)));
 	}
 	
