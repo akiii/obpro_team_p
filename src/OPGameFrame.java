@@ -33,7 +33,8 @@ public class OPGameFrame extends JFrame implements MouseListener {
 		this.pack();
 		this.setVisible(true);
 		this.addMouseListener(this);
-				
+		this.setResizable(false);
+		
 		controller.setObjectsFirst(this, gPanel);
 		controller.runloop(this, gPanel);
 
