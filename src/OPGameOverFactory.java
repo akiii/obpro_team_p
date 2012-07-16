@@ -1,7 +1,7 @@
 import java.net.URL;
 
 
-public class OPScoreFactory extends OPObjectFactory{
+public class OPGameOverFactory extends OPObjectFactory{
 
 	@Override
 	public OPIcon createIcon(int x, int y, int w, int h, URL u) {
@@ -30,13 +30,13 @@ public class OPScoreFactory extends OPObjectFactory{
 	@Override
 	public OPScore createScore(int x, int y, int s) {
 		// TODO Auto-generated method stub
-		return new OPScore(x, y, s);
+		return null;
 	}
 
 	@Override
 	public OPGameOver createGameOverTittle(int x, int y, String c) {
 		// TODO Auto-generated method stub
-		return null;
+		return new OPGameOver(x, y, c);
 	}
 
 }

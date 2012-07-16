@@ -1,3 +1,4 @@
+
 import java.net.URL;
 
 
@@ -27,6 +28,12 @@ public class OPEnemyFactory extends OPObjectFactory{
 
 	@Override
 	public OPScore createScore(int x, int y, int s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OPGameOver createGameOverTittle(int x, int y, String c) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -31,4 +31,10 @@ public class OPMyselfFactory extends OPObjectFactory{
 		return null;
 	}
 
+	@Override
+	public OPGameOver createGameOverTittle(int x, int y, String c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

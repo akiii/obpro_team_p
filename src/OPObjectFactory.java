@@ -6,4 +6,5 @@ public abstract class OPObjectFactory {
 	public abstract OPBackGround createBackGround(int x, int y,int w,int h);
 	public abstract OPLife crateLife(int x, int y, int w, int h, int hp);
 	public abstract OPScore createScore(int x, int y,int s);
+	public abstract OPGameOver createGameOverTittle(int x, int y,String c);
 }
