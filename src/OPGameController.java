@@ -16,11 +16,13 @@ public class OPGameController {
 	private OPObjectFactory scoreFactory = new OPScoreFactory();
 	private OPObjectFactory lifeFactory = new OPLifeFactory();
 	private OPObjectFactory bgFactory = new OPBackGroundFactory();
+	private OPObjectFactory gameOverFactory = new OPGameOverFactory();
 	
 	private OPObject bg;
 	private OPLife gage;
 	private OPObject myself;
 	private OPScore score;
+	private OPGameOver gameOver;
 
 	private ArrayList<OPObject> enemies = new ArrayList<OPObject>();
 	private ArrayList<OPObject> characters = new ArrayList<OPObject>();
@@ -48,6 +50,7 @@ public class OPGameController {
 		int iconWidth = 50;
 		int iconHeight = 50;
 		score = this.scoreFactory.createScore(400, 45, 0);
+		gameOver = this.gameOverFactory.createGameOverTittle(f.getWidth()/2, f.getHeight()/2, "GameOver");
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
 		for (URL u : this.twitter.getFriendUrlsList(10)) {
 			stackEnemiesUrls.add(u);
@@ -118,6 +121,10 @@ public class OPGameController {
 					bulletCount = 0;
 					stackCharacters.clear();
 				}
+			}
+			if(gage.hp == 0){
+				paintingObjects.add(gameOver);
+				p.paint(p.getGraphics(), paintingObjects);
 			}
 		}
 	}
