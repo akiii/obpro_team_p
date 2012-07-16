@@ -1,7 +1,7 @@
 import java.net.URL;
 
 
-public class OPBackGroundFactory extends OPObjectFactory {
+public class OPLifeFactory extends OPObjectFactory{
 
 	@Override
 	public OPIcon createIcon(int x, int y, int w, int h, URL u) {
@@ -18,13 +18,13 @@ public class OPBackGroundFactory extends OPObjectFactory {
 	@Override
 	public OPBackGround createBackGround(int x, int y, int w, int h) {
 		// TODO Auto-generated method stub
-		return new OPBackGround( x, y, w, h);
+		return null;
 	}
 
 	@Override
 	public OPLife crateLife(int x, int y, int w, int h, int hp) {
 		// TODO Auto-generated method stub
-		return null;
+		return new OPLife(x, y, w, h, hp);
 	}
 
 	@Override

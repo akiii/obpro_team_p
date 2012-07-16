@@ -19,4 +19,16 @@ public class OPMyselfFactory extends OPObjectFactory{
 		return null;
 	}
 
+	@Override
+	public OPLife crateLife(int x, int y, int w, int h, int hp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OPScore createScore(int x, int y, int s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
