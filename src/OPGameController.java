@@ -189,7 +189,9 @@ public class OPGameController {
 				o.positionX > f.getWidth() + o.width 	||
 				o.positionY < -o.height/2				||
 				o.positionY > f.getHeight() + o.height		) {
-					gage.hp -= 1;
+					if(gage.hp > 0){
+						gage.hp -= 1;
+					}
 			}
 		}
 	}
