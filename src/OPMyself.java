@@ -7,5 +7,9 @@ public class OPMyself extends OPIcon {
 		super(x, y, w, h, u);
 		this.hp = 5;
 	}
+	
+	public int getHP(){
+		return this.hp;
+	}
 
 }

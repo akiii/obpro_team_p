@@ -20,6 +20,7 @@ public class OPGameController {
 	private OPObject bg;
 	private OPObject gage;
 	private OPObject myself;
+	private OPScore score;
 
 	private ArrayList<OPObject> enemies = new ArrayList<OPObject>();
 	private ArrayList<OPObject> characters = new ArrayList<OPObject>();
@@ -39,11 +40,12 @@ public class OPGameController {
 
 	public void setObjectsFirst(OPGameFrame f, OPGraphicPanel p) throws MalformedURLException, IllegalStateException, TwitterException{
 		bg = this.bgFactory.createBackGround(0, 0, 2*f.getWidth(), 2*f.getHeight());
-		int gageWidth = 250;
-		int gageHeight = 90;
-		gage = this.lifeFactory.crateLife(150, 60, gageWidth, gageHeight, 10);
+		int gageWidth = 350;
+		int gageHeight = 45;
+		gage = this.lifeFactory.crateLife(180, 30, gageWidth, gageHeight, 10);
 		int iconWidth = 50;
 		int iconHeight = 50;
+		score = this.scoreFactory.createScore(500, 45, 0);
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
 		for (URL u : this.twitter.getFriendUrlsList(10)) {
 			stackEnemiesUrls.add(u);
@@ -56,8 +58,9 @@ public class OPGameController {
 	public void runloop(OPGameFrame f, OPGraphicPanel p) throws InterruptedException{
 		while(true){
 			ArrayList<OPObject> paintingObjects = new ArrayList<OPObject>();
-//			paintingObjects.add(bg);
-//			paintingObjects.add(gage);
+			paintingObjects.add(bg);
+			paintingObjects.add(gage);
+			paintingObjects.add(score);
 			paintingObjects.addAll(characters);
 			paintingObjects.addAll(enemies);
 			paintingObjects.add(myself);
@@ -143,6 +146,7 @@ public class OPGameController {
 	private boolean checkConflict(OPObject e, OPObject c) {
 		if (Math.abs(e.positionX - c.positionX) < e.width/2 + c.width/2		&&
 			Math.abs(e.positionY - c.positionY) < e.height/2 + c.height/2		) {
+			score.score += 1;
 			return true;
 		}
 		return false;

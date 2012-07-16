@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 
@@ -13,6 +14,7 @@ public class OPScore extends OPObject{
 	
 	public void paint(Graphics g){
 		g.setColor(Color.RED);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 		String scoreStr = String.valueOf(this.score);
 		g.drawString(scoreStr, this.positionX, this.positionY);
 	}
