@@ -44,6 +44,7 @@ public class OPGraphicPanel extends JPanel {
 	}
 	
 	public void checkConflict() {
+		ArrayList<OPObject> removeObjects = new ArrayList<OPObject>();
 		for (OPObject o : objects) {
 			if(o.getEnemy() != null){
 				for (OPObject p : objects) {
@@ -52,11 +53,14 @@ public class OPGraphicPanel extends JPanel {
 							o.positionX + o.width/2 > p.positionX - p.width/2 && 
 							o.positionY - o.height/2 < p.positionY + p.height/2 && 
 							o.positionY + o.height/2 > p.positionY - p.height/2) {
-							System.out.println("a");
+							removeObjects.add(o);
 						}
 					}
 				}
 			}
+		}
+		for (OPObject o : removeObjects) {
+			objects.remove(o);
 		}
 	}
 
