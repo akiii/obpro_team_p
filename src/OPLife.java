@@ -8,12 +8,10 @@ public class OPLife extends OPObject{
 	
 	protected int width, height;
 	protected int hp;
-	private int maxHp;
+	private final int maxHp;
 	
 	public OPLife(int x, int y, int w, int h, int hp) {
 		super(x, y);
-		this.positionX = x;
-		this.positionY = y;
 		this.width = w;
 		this.height = h;
 		this.maxHp = hp;

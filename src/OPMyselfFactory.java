@@ -13,4 +13,10 @@ public class OPMyselfFactory extends OPObjectFactory{
 		return new OPCharacter(x, y, vx, vy, c);
 	}
 
+	@Override
+	public OPBackGround createBackGround(int x, int y, int w, int h) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
