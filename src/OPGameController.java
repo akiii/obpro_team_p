@@ -13,8 +13,13 @@ public class OPGameController {
 	private OPTwitter twitter = OPTwitter.sharedInstace();
 	private OPObjectFactory myselfFactory = new OPMyselfFactory();
 	private OPObjectFactory enemyFactory = new OPEnemyFactory();
+	private OPObjectFactory scoreFactory = new OPScoreFactory();
+	private OPObjectFactory lifeFactory = new OPLifeFactory();
+	private OPObjectFactory bgFactory = new OPBackGroundFactory();
 	
 	private OPObject myself;
+	private OPObject bg;
+	private OPObject gage;
 	private ArrayList<OPObject> stackEnemys = new ArrayList<OPObject>();
 	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
 	private ArrayList<String> stackTweets = new ArrayList<String>();
@@ -31,6 +36,12 @@ public class OPGameController {
 	}
 
 	public void setObjectsFirst(OPGameFrame f, OPGraphicPanel p) throws MalformedURLException, IllegalStateException, TwitterException{
+		bg = this.bgFactory.createBackGround(0, 0, 2*f.getWidth(), 2*f.getHeight());
+		p.addObject(bg);
+		int gageWidth = 250;
+		int gageHeight = 90;
+		gage = this.lifeFactory.crateLife(150, 60, gageWidth, gageHeight, 10);
+		p.addObject(gage);
 		int iconWidth = 50;
 		int iconHeight = 50;
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
