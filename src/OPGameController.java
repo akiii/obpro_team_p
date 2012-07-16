@@ -111,7 +111,7 @@ public class OPGameController {
 	
 	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
 		for(char c :stackTweets.get(mouseClickCount).toCharArray()){
-			OPObject ch = this.myselfFactory.createCharacter(f.getWidth() - myself.getWidth(), f.getHeight()/2, (int)(point.getX()-25), (int)(point.getY()-f.getHeight()/2), String.valueOf(c));
+			OPObject ch = this.myselfFactory.createCharacter(f.getWidth() - myself.getWidth(), f.getHeight()/2, (int)(point.getX()-f.getWidth()+myself.getWidth()), (int)(point.getY()-f.getHeight()/2), String.valueOf(c));
 			stackCharacters.add(ch);
 		}
 		mouseClickCount++;

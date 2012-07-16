@@ -12,7 +12,7 @@ public class OPCharacter extends OPObject{
 		this.width = 25;
 		this.height = 25;
 		this.character = c;
-		this.velocityX = (int) (vx*15 / Math.sqrt((vx*vx+vy*vy))) * -1;
+		this.velocityX = (int) (vx*15 / Math.sqrt((vx*vx+vy*vy)));
 		this.velocityY = (int) (vy*15 / Math.sqrt((vx*vx+vy*vy)));
 	}
 	
