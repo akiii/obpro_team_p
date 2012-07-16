@@ -19,4 +19,8 @@ public class OPEnemy extends OPIcon{
 		}
 	}
 
+	public OPObject getEnemy() {
+		return this;
+	}
+
 }

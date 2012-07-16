@@ -25,4 +25,13 @@ public class OPObject {
 		return this.height;
 	}
 	
+	public OPObject getEnemy() {
+		return null;
+	}
+	
+	public OPObject getCharacter() {
+		return null;
+	}
+
+	
 }

@@ -42,6 +42,23 @@ public class OPGraphicPanel extends JPanel {
 			objects.remove(o);
 		}
 	}
+	
+	public void checkConflict() {
+		for (OPObject o : objects) {
+			if(o.getEnemy() != null){
+				for (OPObject p : objects) {
+					if(p.getCharacter() != null) {
+						if (o.positionX - o.width/2 < p.positionX + p.width/2 && 
+							o.positionX + o.width/2 > p.positionX - p.width/2 && 
+							o.positionY - o.height/2 < p.positionY + p.height/2 && 
+							o.positionY + o.height/2 > p.positionY - p.height/2) {
+							System.out.println("a");
+						}
+					}
+				}
+			}
+		}
+	}
 
 	public void clean(Graphics g){
 		g.setColor(new Color(255, 255, 255));

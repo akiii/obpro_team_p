@@ -22,6 +22,11 @@ public class OPCharacter extends OPObject{
 	public void paint(Graphics g){
 		g.setColor(new Color(0, 0, 0));
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-		g.drawString(this.character, this.positionX, this.positionY);
+		g.drawString(this.character, this.positionX - this.width/2, this.positionY + this.height/2);
 	}
+	
+	public OPObject getCharacter () {
+		return this;
+	}
+
 }

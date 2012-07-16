@@ -15,6 +15,7 @@ public class OPIcon extends OPObject{
 		this.width = w;
 		this.height = h;
 		this.url = u;
+		this.hp = 2;
 	}
 	
 	public void paint(Graphics g) {

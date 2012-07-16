@@ -50,6 +50,7 @@ public class OPGameController {
 			p.repaint();
 			p.moveObject();
 			p.checkRemoveObject(f);
+			p.checkConflict();
 			Thread.sleep(30);
 			gameTime += 0.03;
 			releaseTimer ++;
