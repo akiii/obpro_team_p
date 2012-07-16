@@ -127,6 +127,7 @@ public class OPGameController {
 			if(gage.hp == 0){
 				paintingObjects.add(gameOver);
 				p.paint(p.getGraphics(), paintingObjects);
+				break;
 			}
 		}
 	}
