@@ -18,7 +18,7 @@ public class OPGameController {
 	private OPObjectFactory bgFactory = new OPBackGroundFactory();
 	
 	private OPObject bg;
-	private OPObject gage;
+	private OPLife gage;
 	private OPObject myself;
 	private OPScore score;
 
@@ -72,6 +72,7 @@ public class OPGameController {
 			movingObjects.add(myself);
 			p.moveObjects(movingObjects);
 			
+			this.reduceLife(f, enemies);
 			this.removeOutsideObjects(f, enemies);
 			this.removeOutsideObjects(f, characters);
 			
@@ -79,6 +80,7 @@ public class OPGameController {
 			for (OPObject e : enemies) {
 				for (OPObject c : characters) {
 					if (this.checkConflict(e, c)) {
+						score.score += 1;
 						collisionEnemies.add(e);
 						stackEnemiesUrls.add(((OPEnemy)e).url);
 					}
@@ -146,9 +148,19 @@ public class OPGameController {
 	private boolean checkConflict(OPObject e, OPObject c) {
 		if (Math.abs(e.positionX - c.positionX) < e.width/2 + c.width/2		&&
 			Math.abs(e.positionY - c.positionY) < e.height/2 + c.height/2		) {
-			score.score += 1;
 			return true;
 		}
 		return false;
+	}
+	
+	private void reduceLife(OPGameFrame f , ArrayList<OPObject> objects){
+		for (OPObject o : objects) {
+			if (o.positionX < -o.width/2 				||
+				o.positionX > f.getWidth() + o.width 	||
+				o.positionY < -o.height/2				||
+				o.positionY > f.getHeight() + o.height		) {
+					gage.hp -= 1;
+			}
+		}
 	}
 }
