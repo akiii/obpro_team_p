@@ -19,9 +19,12 @@ public class OPLife extends OPObject{
 	}
 
 	public void paint(Graphics g){
-		Image icon = new ImageIcon("src/gift_button_red_back.png", null).getImage();
+		Image icon = new ImageIcon("src/notification_text_back.png", null).getImage();
+		Image gradient = new ImageIcon("src/gradient.jpg", null).getImage();
+		g.drawImage(icon, this.positionX - this.width/2, this.positionY - this.height/2, this.width, this.height, null);
 		double gage = this.hp / this.maxHp; 
-		int gageWidth = (int) (gage * this.width);
-		g.drawImage(icon, this.positionX - this.width/2, this.positionY - this.height/2, gageWidth, this.height, null);
+		int gradientWidth = (int) (gage *0.97* this.width);
+		int gradientHeight = (int) (0.7 * this.height);
+		g.drawImage(gradient, this.positionX - this.width/2+5, this.positionY - this.height/2+5, gradientWidth, gradientHeight, null);
 	}
 }
