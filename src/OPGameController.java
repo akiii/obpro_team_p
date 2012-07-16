@@ -13,11 +13,17 @@ public class OPGameController {
 	private OPTwitter twitter = OPTwitter.sharedInstace();
 	private OPObjectFactory myselfFactory = new OPMyselfFactory();
 	private OPObjectFactory enemyFactory = new OPEnemyFactory();
+	private OPObjectFactory scoreFactory = new OPScoreFactory();
+	private OPObjectFactory lifeFactory = new OPLifeFactory();
+	private OPObjectFactory bgFactory = new OPBackGroundFactory();
 	
+	private OPObject bg;
+	private OPObject gage;
 	private OPObject myself;
+
 	private ArrayList<OPObject> enemies = new ArrayList<OPObject>();
 	private ArrayList<OPObject> characters = new ArrayList<OPObject>();
-	
+
 	private ArrayList<URL> stackEnemiesUrls = new ArrayList<URL>();
 	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
 	private ArrayList<String> stackTweets = new ArrayList<String>();
@@ -32,6 +38,10 @@ public class OPGameController {
 	}
 
 	public void setObjectsFirst(OPGameFrame f, OPGraphicPanel p) throws MalformedURLException, IllegalStateException, TwitterException{
+		bg = this.bgFactory.createBackGround(0, 0, 2*f.getWidth(), 2*f.getHeight());
+		int gageWidth = 250;
+		int gageHeight = 90;
+		gage = this.lifeFactory.crateLife(150, 60, gageWidth, gageHeight, 10);
 		int iconWidth = 50;
 		int iconHeight = 50;
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
@@ -46,6 +56,8 @@ public class OPGameController {
 	public void runloop(OPGameFrame f, OPGraphicPanel p) throws InterruptedException{
 		while(true){
 			ArrayList<OPObject> paintingObjects = new ArrayList<OPObject>();
+//			paintingObjects.add(bg);
+//			paintingObjects.add(gage);
 			paintingObjects.addAll(characters);
 			paintingObjects.addAll(enemies);
 			paintingObjects.add(myself);
@@ -127,7 +139,6 @@ public class OPGameController {
 	private boolean checkConflict(OPObject e, OPObject c) {
 		if (Math.abs(e.positionX - c.positionX) < e.width/2 + c.width/2		&&
 			Math.abs(e.positionY - c.positionY) < e.height/2 + c.height/2		) {
-			System.out.println("collision");
 			return true;
 		}
 		return false;
