@@ -13,9 +13,9 @@ public class OPScore extends OPObject{
 	}
 	
 	public void paint(Graphics g){
-		g.setColor(Color.RED);
+		g.setColor(Color.WHITE);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-		String scoreStr = String.valueOf(this.score);
+		String scoreStr = "スコア：    　　" + String.valueOf(this.score);
 		g.drawString(scoreStr, this.positionX, this.positionY);
 	}
 

@@ -46,7 +46,7 @@ public class OPGameController {
 		gage = this.lifeFactory.crateLife(180, 30, gageWidth, gageHeight, 10);
 		int iconWidth = 50;
 		int iconHeight = 50;
-		score = this.scoreFactory.createScore(500, 45, 0);
+		score = this.scoreFactory.createScore(400, 45, 0);
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
 		for (URL u : this.twitter.getFriendUrlsList(10)) {
 			stackEnemiesUrls.add(u);
