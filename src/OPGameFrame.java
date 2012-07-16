@@ -61,8 +61,14 @@ public class OPGameFrame extends JFrame implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("mouse clicked");
-		controller.setBullet(this, gPanel, e.getPoint());
+	    if ((e.getModifiers() & java.awt.event.MouseEvent.BUTTON1_MASK) != 0) {
+			controller.setBullet(this, gPanel, e.getPoint());
+	        System.out.println("left mouse");
+	    }
+		if ((e.getModifiers() & java.awt.event.MouseEvent.BUTTON3_MASK) != 0) {
+			controller.setBullets(this, gPanel, e.getPoint());
+			System.out.println("right mouse");
+		}
 	}
 
 	@Override
