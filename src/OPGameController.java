@@ -31,7 +31,8 @@ public class OPGameController {
 	
 	private int timer = 0;
 	private int duration = 100;
-	private int mouseClickCount = 0;
+	private int leftMouseCount = 0;
+	private int rightMouseCount = 0;
 	public boolean isBullet = false;
 	private int bulletCount = 0;
 		
@@ -121,14 +122,28 @@ public class OPGameController {
 		}
 	}
 	
-	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
-		for(char c :stackTweets.get(mouseClickCount).toCharArray()){
+	public void setBullets(OPGameFrame f, OPGraphicPanel p, Point point) {
+		for(char c :stackTweets.get(rightMouseCount).toCharArray()){
 			OPObject ch = this.myselfFactory.createCharacter(f.getWidth() - myself.getWidth(), f.getHeight()/2, (int)(point.getX()-f.getWidth()+myself.getWidth()), (int)(point.getY()-f.getHeight()/2), String.valueOf(c));
 			stackCharacters.add(ch);
 		}
-		mouseClickCount++;
-		if (mouseClickCount >= stackTweets.size()) {
-			mouseClickCount = 0;
+		rightMouseCount++;
+		if (rightMouseCount >= stackTweets.size()) {
+			rightMouseCount = 0;
+		}
+		isBullet = true;
+	}
+	
+	public void setBullet(OPGameFrame f, OPGraphicPanel p, Point point) {
+		OPObject ch = this.myselfFactory.createCharacter(f.getWidth() - myself.getWidth(), f.getHeight()/2, (int)(point.getX()-f.getWidth()+myself.getWidth()), (int)(point.getY()-f.getHeight()/2), String.valueOf(stackTweets.get(rightMouseCount).charAt(leftMouseCount)));
+		stackCharacters.add(ch);
+		leftMouseCount++;
+		if (leftMouseCount >= stackTweets.get(rightMouseCount).length()) {
+			leftMouseCount = 0;
+			rightMouseCount++;
+			if (rightMouseCount >= stackTweets.size()) {
+				rightMouseCount = 0;
+			}
 		}
 		isBullet = true;
 	}
