@@ -64,11 +64,11 @@ public class OPGameController {
 		while(true){
 			ArrayList<OPObject> paintingObjects = new ArrayList<OPObject>();
 			paintingObjects.add(bg);
-			paintingObjects.add(gage);
-			paintingObjects.add(score);
 			paintingObjects.addAll(characters);
 			paintingObjects.addAll(enemies);
 			paintingObjects.add(myself);
+			paintingObjects.add(score);
+			paintingObjects.add(gage);
 			p.paint(p.getGraphics(), paintingObjects);
 			
 			ArrayList<OPObject> movingObjects = new ArrayList<OPObject>();
@@ -86,12 +86,14 @@ public class OPGameController {
 				for (OPObject c : characters) {
 					if (this.checkConflict(e, c)) {
 						score.score += 1;
-						collisionEnemies.add(e);
 						stackEnemiesUrls.add(((OPEnemy)e).url);
+						collisionEnemies.add(e);
+						collisionEnemies.add(c);						
 					}
 				}
 			}
-			enemies.removeAll(collisionEnemies);			
+			enemies.removeAll(collisionEnemies);
+			characters.removeAll(collisionEnemies);
 			
 			Thread.sleep(30);
 			timer ++;

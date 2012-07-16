@@ -22,7 +22,7 @@ public class OPCharacter extends OPObject{
 	}
 	
 	public void paint(Graphics g){
-		g.setColor(new Color(0, 0, 0));
+		g.setColor(Color.WHITE);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 		//debug
 		g.drawRect(positionX-width/2, positionY-height/2, width, height);
