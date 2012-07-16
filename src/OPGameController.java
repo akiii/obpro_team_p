@@ -77,6 +77,7 @@ public class OPGameController {
 				for (OPObject c : characters) {
 					if (this.checkConflict(e, c)) {
 						collisionEnemies.add(e);
+						stackEnemiesUrls.add(((OPEnemy)e).url);
 					}
 				}
 			}
@@ -129,6 +130,9 @@ public class OPGameController {
 				o.positionY < -o.height/2				||
 				o.positionY > f.getHeight() + o.height		) {
 				removeObjects.add(o);
+				if (o.getClass().equals(OPEnemy.class)) {
+					stackEnemiesUrls.add(((OPEnemy)o).url);
+				}
 			}
 		}
 		for (OPObject o : removeObjects) {
