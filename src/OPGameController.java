@@ -30,6 +30,7 @@ public class OPGameController {
 	private ArrayList<String> stackTweets = new ArrayList<String>();
 	
 	private int timer = 0;
+	private int duration = 100;
 	private int mouseClickCount = 0;
 	public boolean isBullet = false;
 	private int bulletCount = 0;
@@ -90,13 +91,18 @@ public class OPGameController {
 			
 			Thread.sleep(30);
 			timer ++;
-			if (timer % 100 == 0) {
+			if (duration > 10) {
+				duration = 100 - timer / 50;
+				System.out.println(duration);
+			}
+			if (timer % duration == 0) {
 				if (stackEnemiesUrls.size() > 0) {
 					int iconWidth = 50;
 					int iconHeight = 50;
 					URL u = stackEnemiesUrls.get((int)Math.random() % stackEnemiesUrls.size());
 					OPEnemy e = (OPEnemy)this.enemyFactory.createIcon(-iconWidth/2, (int)(Math.random() * (f.getHeight() - iconWidth/2*3)) + iconWidth/2, iconWidth, iconHeight, u);
 					e.active = true;
+					e.velocityX +=timer/500;
 					stackEnemiesUrls.remove(u);
 					enemies.add(e);
 				}

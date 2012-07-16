@@ -9,7 +9,7 @@ public class OPEnemy extends OPIcon{
 		super(x, y, w, h, u);
 		this.hp = 1;
 		this.active = false;
-		this.velocityX = (int)(1 + Math.random() % 5);
+		this.velocityX = (int)(1 + Math.random()*100 % 5);
 		this.velocityY = 0;
 	}
 
