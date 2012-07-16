@@ -19,13 +19,11 @@ public class OPGameController {
 	private ArrayList<OPObject> stackCharacters = new ArrayList<OPObject>();
 	private ArrayList<String> stackTweets = new ArrayList<String>();
 	
-	private int releaseTimer = 0;
+	private int timer = 0;
 	private int mouseClickCount = 0;
 	public boolean isBullet = false;
 	private int bulletCount = 0;
-	
-	public float gameTime = 0;
-	
+		
 	public OPGameController() throws TwitterException, IOException{
 		this.twitter.login();
 	}
@@ -52,9 +50,8 @@ public class OPGameController {
 			p.checkRemoveObject(f);
 			p.checkConflict();
 			Thread.sleep(30);
-			gameTime += 0.03;
-			releaseTimer ++;
-			if (releaseTimer % 100 == 0) {
+			timer ++;
+			if (timer % 100 == 0) {
 				if (stackEnemys.size() > 0) {
 					OPEnemy e = (OPEnemy)stackEnemys.get((int)Math.random() % stackEnemys.size());
 					e.active = true;
@@ -63,7 +60,7 @@ public class OPGameController {
 					stackEnemys.remove(e);
 				}
 			}
-			if (releaseTimer % 2 == 0 && isBullet) {
+			if (timer % 2 == 0 && isBullet) {
 				p.addObject(stackCharacters.get(bulletCount));
 				bulletCount++;
 				if (bulletCount >= stackCharacters.size()) {
