@@ -52,10 +52,10 @@ public class OPGameController {
 		score = this.scoreFactory.createScore(400, 45, 0);
 		gameOver = this.gameOverFactory.createGameOverTittle(f.getWidth()/2, f.getHeight()/2, "GameOver");
 		myself = this.myselfFactory.createIcon(f.getWidth() - iconWidth/2, f.getHeight()/2, iconWidth, iconHeight, this.twitter.getCurrentUserIconURL());
-		for (URL u : this.twitter.getFriendUrlsList(10)) {
+		for (URL u : this.twitter.getFriendUrlsList(20)) {
 			stackEnemiesUrls.add(u);
 		}
-		for (String s : this.twitter.getMyTweets(10)) {
+		for (String s : this.twitter.getMyTweets(20)) {
 			stackTweets.add(s);
 		}
 	}
@@ -99,7 +99,6 @@ public class OPGameController {
 			timer ++;
 			if (duration > 10) {
 				duration = 100 - timer / 50;
-				System.out.println(duration);
 			}
 			if (timer % duration == 0) {
 				if (stackEnemiesUrls.size() > 0) {
